@@ -1,15 +1,12 @@
 require 'net/https'
 require 'uri'
 require 'json'
+require_relative '../app_config.rb'
 
 class FourSquare
-  CONFIG       = File.exists?('config.yml') ? YAML.load_file(File.open('config.yml'))[ENV['RACK_ENV']]['foursquare'] : {}
-  API_KEY      = CONFIG.fetch('api_key', ENV['FSQ_KEY'])
-  API_SECRET   = CONFIG.fetch('client_secret', ENV['FSQ_SECRET'])
-  REDIRECT_URI = CONFIG.fetch('redirect_uri', ENV['FSQ_REDIRECT_URI'])
   API_VERSION  = '20130714'
-  AUTH_URL     = "https://foursquare.com/oauth2/authenticate?client_id=#{API_KEY}&response_type=code&redirect_uri=#{REDIRECT_URI}"
-  TOKEN_URL    = "https://foursquare.com/oauth2/access_token?client_id=#{API_KEY}&client_secret=#{API_SECRET}&grant_type=authorization_code&redirect_uri=#{REDIRECT_URI}&code="
+  AUTH_URL     = "https://foursquare.com/oauth2/authenticate?client_id=#{AppConfig::FSQ_API_KEY}&response_type=code&redirect_uri=#{AppConfig::FSQ_REDIRECT_URI}"
+  TOKEN_URL    = "https://foursquare.com/oauth2/access_token?client_id=#{AppConfig::FSQ_API_KEY}&client_secret=#{AppConfig::FSQ_API_SECRET}&grant_type=authorization_code&redirect_uri=#{AppConfig::FSQ_REDIRECT_URI}&code="
   CHECKINS_URL = "https://api.foursquare.com/v2/users/self/checkins?v=#{API_VERSION}"
   USERS_URL = "https://api.foursquare.com/v2/users/self/?v=#{API_VERSION}"
 
