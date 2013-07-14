@@ -9,3 +9,4 @@ gem "json"
 gem "oauth2"
 gem 'sinatra-twitter-bootstrap'
 gem 'mongoid'
+gem 'rest-client'
