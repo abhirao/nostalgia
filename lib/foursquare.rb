@@ -11,6 +11,7 @@ class FourSquare
   AUTH_URL     = "https://foursquare.com/oauth2/authenticate?client_id=#{API_KEY}&response_type=code&redirect_uri=#{REDIRECT_URI}"
   TOKEN_URL    = "https://foursquare.com/oauth2/access_token?client_id=#{API_KEY}&client_secret=#{API_SECRET}&grant_type=authorization_code&redirect_uri=#{REDIRECT_URI}&code="
   CHECKINS_URL = "https://api.foursquare.com/v2/users/self/checkins?v=#{API_VERSION}"
+  USERS_URL = "https://api.foursquare.com/v2/users/self/?v=#{API_VERSION}"
 
   attr_accessor :token
 
@@ -35,6 +36,10 @@ class FourSquare
     before = Time.new(now.year - 1, now.month, now.day).to_date
     after = before.prev_day
     make_request CHECKINS_URL + "&beforeTimestamp=#{before.to_time.to_i}&afterTimestamp=#{after.to_time.to_i}"
+  end
+
+  def user_info
+    make_request USERS_URL
   end
 
   private
