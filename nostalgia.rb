@@ -18,9 +18,7 @@ get '/' do
   if session['token']
     foursquare= FourSquare.new
     foursquare.token = session['token']
-    @checkins = foursquare.year_ago['response']['checkins']['items']
-    puts @checkins
-    @checkins.sort_by!{|c| c['createdAt']}
+    @checkins = foursquare.year_ago['response']['checkins']['items'].sort_by!{|c| c['createdAt']}
   end
   haml :index
 end
@@ -35,3 +33,4 @@ get '/fsq/callback'  do
   session['token'] = foursquare.get_token(code)
   redirect to('/')
 end
+
