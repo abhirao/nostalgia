@@ -1,0 +1,10 @@
+%h1 Welcome to Foursquare Nostalgia
+.about
+  %ul
+    -if session['token']
+      %h2 A year ago you went to:
+      %ol
+      - @checkins.each do |checkin|
+        %li= checkin['venue']['name']
+    -else
+      %li Want email reminders of what you were doing a year ago? Get reminders by <a href='/login'>logging in</a> and authorizing this app

@@ -1,0 +1,17 @@
+<!doctype html>
+%html
+  %head
+    = bootstrap_assets
+    %script{:type=>"text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
+    %script{:type=>"text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"}
+    %title Foursquare Nostalgia
+  %body
+    .navbar.navar-fixed-top
+      .navbar-inner
+        .container
+          %a{:class=>'brand'} Foursquare Nostalgia
+          .nav-collapse
+            %ul.nav
+              %li
+                %a{:href => "/"} Home
+    != yield
