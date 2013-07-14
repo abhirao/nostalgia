@@ -5,4 +5,5 @@ class AppConfig
   FSQ_API_SECRET   = FSQ_CONFIG.fetch('client_secret', ENV['FSQ_SECRET'])
   FSQ_REDIRECT_URI = FSQ_CONFIG.fetch('redirect_uri', ENV['FSQ_REDIRECT_URI'])
   MAILGUN_API_KEY  = MAILGUN_CONFIG.fetch('api_key', ENV['MAILGUN_API_KEY'])
+  MAILGUN_API_DOMAIN  = MAILGUN_CONFIG.fetch('api_domain', ENV['MAILGUN_API_DOMAIN'])
 end
