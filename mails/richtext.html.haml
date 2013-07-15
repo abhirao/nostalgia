@@ -1,0 +1,10 @@
+%html
+  %head
+    %body
+    -if checkins.any?
+      %h1 A year ago you checked in at:
+      %ol
+      - checkins.each do |checkin|
+        %li= checkin['venue']['name']
+    -else
+      %h1 A year ago you didn't check in anywhere. Make today more memorable!

@@ -7,7 +7,7 @@ class Notification
 
   def self.process(to, subject, text, html)
     RestClient.post API_URL+"/messages",
-      :from => "ev@example.com",
+      :from => "no-reply@nostalgia.herokuapp.com",
       :to => to,
       :subject => subject,
       :text => text,
