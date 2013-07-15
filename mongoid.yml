@@ -10,6 +10,8 @@ production:
       database: nostalgia_production
       hosts:
         - <%= ENV['MONGOHQ_URL'] %>
+      username: <%= ENV['MONGOHQ_USER']%>
+      password: <%= ENV['MONGOHQ_PWD']%>
       options:
         skip_version_check: true
         safe: true
