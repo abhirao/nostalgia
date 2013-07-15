@@ -38,7 +38,9 @@ get '/fsq/callback'  do
   session['token'] = foursquare.token
   user_attrs = foursquare.user_info['response']['user']
   email = user_attrs['contact']['email']
-  User.create!(email: email, token: foursquare.token)
+  user = User.find_or_initialize_by(email: email)
+  user.token = foursquare.token
+  user.save!
   redirect to('/')
 end
 
