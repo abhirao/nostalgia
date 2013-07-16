@@ -7,7 +7,7 @@ development:
 production:
   sessions:
     default:
-      database: nostalgia_production
+      database: <%= ENV['MONGOHQ_DB'] %>
       hosts:
         - <%= ENV['MONGOHQ_URL'] %>
       username: <%= ENV['MONGOHQ_USER']%>
