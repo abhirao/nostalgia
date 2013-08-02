@@ -19,8 +19,13 @@ set :session_secret, ENV['SESSION_SECRET'] || 'gibberish'
 
 Mongoid.load!('mongoid.yml')
 
+before do
+  if session['email']
+    @user = User.find_by(email: session['email'])
+  end
+end
+
 get '/' do
-  @user = User.find_by(email: session['email']) if session['email']
   if @user
     foursquare= FourSquare.new
     foursquare.token = @user.token
@@ -40,6 +45,17 @@ end
 get '/logout' do
   session.destroy
   redirect to('/')
+end
+
+get '/disconnect' do
+  haml :diconnect
+end
+
+get '/disconnect_confirmed' do
+  session.destroy
+  @user.destroy
+  @user = nil
+  haml :disconnect_confirmed
 end
 
 get '/fsq/callback'  do
