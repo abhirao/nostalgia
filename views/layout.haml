@@ -14,4 +14,15 @@
             %ul.nav
               %li
                 %a{:href => "/"} Home
+            %ul.nav.pull-right
+              - if @user
+                %li
+                  %p.navbar-text
+                    = @user.email
+                %li
+                  %a{:href => "/logout"} Logout
+              - else
+                %li
+                  %a{:href => "/login"}
+                    %img{:src => 'images/connect-fsq.png'}
     != yield

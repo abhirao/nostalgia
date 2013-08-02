@@ -37,6 +37,11 @@ get '/login' do
   end
 end
 
+get '/logout' do
+  session.destroy
+  redirect to('/')
+end
+
 get '/fsq/callback'  do
   code = params[:code]
   foursquare = FourSquare.new
