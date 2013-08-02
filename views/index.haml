@@ -1,7 +1,7 @@
 %h1 Welcome to Foursquare Nostalgia
 .about
   %ul
-    -if session['token']
+    -if @user
       - if @checkins.empty?
         %h2 A year ago you did not checkin anywhere. Make today more memorable!
       - else

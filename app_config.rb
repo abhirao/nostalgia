@@ -1,3 +1,4 @@
+require 'yaml'
 class AppConfig
   FSQ_CONFIG  = File.exists?('config.yml') ? YAML.load_file(File.open('config.yml'))['foursquare'] : {}
   MAILGUN_CONFIG  = File.exists?('config.yml') ? YAML.load_file(File.open('config.yml'))['mailgun'] : {}
