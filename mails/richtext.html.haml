@@ -5,6 +5,9 @@
       %h1 A year ago you checked in at:
       %ol
       - checkins.each do |checkin|
-        %li= checkin['venue']['name']
+        %li
+          = checkin['venue']['name']
+          - if checkin['event']
+            %h2= checkin['event']['name']
     -else
       %h1 A year ago you didn't check in anywhere. Make today more memorable!
