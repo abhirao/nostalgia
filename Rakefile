@@ -13,6 +13,7 @@ task :notify => [:environment] do
     foursquare= FourSquare.new
     foursquare.token = user.token
     checkins = foursquare.year_ago['response']['checkins']['items'].sort_by!{|c| c['createdAt']}
+    next if checkins.none?
     engine = Haml::Engine.new(File.read('mails/plaintext.haml'))
     text_body = engine.render(Object.new, checkins: checkins)
     engine = Haml::Engine.new(File.read('mails/richtext.html.haml'))
