@@ -13,5 +13,4 @@ production:
       username: <%= ENV['MONGOHQ_USER']%>
       password: <%= ENV['MONGOHQ_PWD']%>
       options:
-        skip_version_check: true
         safe: true
