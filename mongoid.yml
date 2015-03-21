@@ -12,5 +12,3 @@ production:
         - <%= ENV['MONGOHQ_URL'] %>
       username: <%= ENV['MONGOHQ_USER']%>
       password: <%= ENV['MONGOHQ_PWD']%>
-      options:
-        safe: true
